@@ -1,7 +1,7 @@
 changelog:
   exclude:
     labels:
-      - no release note
+      - "no release note"
   categories:
     - title: Enhancements
       labels:
