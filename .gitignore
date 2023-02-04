@@ -1,0 +1,8 @@
+# scheme
+*.ss~
+*.ss#*
+.#*.ss
+
+*.scm~
+*.scm#*
+.#*.scm
