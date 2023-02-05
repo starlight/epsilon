@@ -6,4 +6,4 @@
     r7rs
     (epsilon base))
   (begin
-    (compile-program '())))
+    (compile '())))

@@ -3,10 +3,15 @@
   (import
     scheme
     r7rs
-    test)
+    test
+    (epsilon base))
+
   (begin
     (test-group
-      "example tests"
-      (test "test equal: 2 (+ 1 1)" 2 (+ 1 1))
-      (test-assert "assert true: (= 1 1)" (= 1 1)))
+      "compile-string"
+      (test
+        "BEL char returned by `compile-string`"
+        "\a"
+        (compile-string '())))
+
     (test-exit)))
