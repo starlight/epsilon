@@ -1,9 +1,9 @@
 ; Scheme entrypoint for bootstrap compiler
 (define-library
-  (epsilon core)
+  epsilon
   (import
     scheme
     r7rs
-    epsilon.machine)
+    (epsilon base))
   (begin
-    (foo)))
+    (compile-program '())))

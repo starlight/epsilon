@@ -12,6 +12,7 @@
 
 # project
 /epsilon
+/run-tests
 *.c
 *.import.scm
 *.o
