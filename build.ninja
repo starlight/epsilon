@@ -1,15 +1,14 @@
-cscflags = -X r7rs -R r7rs
-
+CSC_FLAGS = -X r7rs -R r7rs
 rule csc
-  command = csc $cscflags -o $out $in
+  command = csc $CSC_FLAGS -o $out $in
 
 build epsilon: csc src/epsilon.scm epsilon.base.o
-  cscflags = $cscflags -uses base
+  CSC_FLAGS = $CSC_FLAGS -uses base
 
 build run-tests: csc tests/run.scm epsilon.base.o
-  cscflags = $cscflags -uses base
+  CSC_FLAGS = $CSC_FLAGS -uses base
+
+build epsilon.base.o: csc src/base.scm
+  CSC_FLAGS = $CSC_FLAGS -cJ -unit base
 
 default epsilon run-tests
-
-build epsilon.base.o | epsilon.base.import.scm: csc src/base.scm
-  cscflags = $cscflags -cJ -unit base
