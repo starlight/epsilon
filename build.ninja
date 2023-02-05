@@ -3,10 +3,13 @@ cscflags = -X r7rs -R r7rs
 rule csc
   command = csc $cscflags -o $out $in
 
-build epsilon: csc src/epsilon.scm machine.o
-  cscflags = $cscflags -uses machine
+build epsilon.base.o | epsilon.base.import.scm: csc src/base.scm
+  cscflags = $cscflags -cJ -unit base
 
-build machine.o | epsilon.machine.import.scm: csc src/machine.scm
-  cscflags = $cscflags -cJ -unit machine
+build epsilon: csc src/epsilon.scm epsilon.base.o
+  cscflags = $cscflags -uses base
 
-default epsilon
+build run-tests: csc tests/run.scm epsilon.base.o
+  cscflags = $cscflags -uses base
+
+default epsilon run-tests
