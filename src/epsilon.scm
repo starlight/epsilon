@@ -6,4 +6,4 @@
     (epsilon base))
 
   (begin
-    (compile '())))
+    (compile)))

@@ -4,14 +4,13 @@
     scheme
     r7rs
     test
-    (epsilon base))
+    (epsilon tests fixture))
 
   (begin
     (test-group
-      "compile-string"
+      "test-compile"
       (test
-        "BEL char returned by `compile-string`"
-        "\a"
-        (compile-string '())))
-
+        "parses s-expressions"
+        "(quote ())"
+        (test-compile "'()")))
     (test-exit)))
