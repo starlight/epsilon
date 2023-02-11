@@ -8,9 +8,8 @@
 
   (begin
     (test-group
-      "test-compile"
+      "compile"
       (test
-        "parses s-expressions"
-        "(quote ())"
-        (test-compile "'()")))
+        "#t"
+        (test-compile #t)))
     (test-exit)))
