@@ -1,18 +1,6 @@
-# ninja
 .ninja_log
-
-# scheme
-*.ss~
-*.ss#*
-.#*.ss
-
-*.scm~
-*.scm#*
-.#*.scm
-
-# project
-/epsilon
-/run-tests
-*.c
 *.import.scm
+*.c
 *.o
+/epsilon
+/tests

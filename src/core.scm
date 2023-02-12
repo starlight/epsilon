@@ -1,5 +1,5 @@
 (define-library
-  (epsilon base)
+  (epsilon core)
   (import
     scheme
     r7rs)

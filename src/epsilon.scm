@@ -3,7 +3,6 @@
   (import
     scheme
     r7rs
-    (epsilon base))
+    (epsilon core))
 
-  (begin
-    (compile)))
+  (begin (compile)))

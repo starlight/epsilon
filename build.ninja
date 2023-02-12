@@ -1,18 +1,19 @@
 CSC_FLAGS =
+CSC_OPTIONS = -R r7rs -regenerate-import-libraries
 
 rule csc
-  command = csc -R r7rs $CSC_FLAGS -o '$out' $in
+  command = csc $CSC_OPTIONS $CSC_FLAGS -o '$out' $in
 
-build epsilon: csc src/epsilon.scm epsilon.base.o
-  CSC_FLAGS = -uses base
+build epsilon: csc src/epsilon.scm epsilon.core.o
+  CSC_FLAGS = -uses core
 
-build run-tests: csc tests/run.scm epsilon.base.o epsilon.tests.fixture.o
-  CSC_FLAGS = -uses tests-fixture
+build tests: csc src/tests/tests.scm epsilon.core.o tests.io.o
+  CSC_FLAGS = -uses core -uses testio
 
-build epsilon.base.o: csc src/base.scm
-  CSC_FLAGS = -cJ -unit base
+build epsilon.core.o | epsilon.core.import.scm: csc src/core.scm
+  CSC_FLAGS = -cJ -unit core
 
-build epsilon.tests.fixture.o: csc tests/fixture.scm | epsilon.base.o
-  CSC_FLAGS = -cJ -unit tests-fixture -uses base
+build tests.io.o | tests.io.import.scm: csc src/tests/io.scm
+  CSC_FLAGS = -cJ -unit testio
 
-default epsilon run-tests
+default epsilon tests

@@ -49,5 +49,5 @@ fi
 git diff-index --check --cached $against -- || exit 1
 
 # ninja build and run tests
-ninja -v || exit 1
-exec ./run-tests
+ninja || exit 1
+exec ./tests
