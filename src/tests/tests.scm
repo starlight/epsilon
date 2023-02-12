@@ -3,14 +3,15 @@
   (import
     scheme
     r7rs
+    (chicken format)
+    (chicken port)
     test
-    (epsilon core)
-    (tests io))
+    (epsilon core))
 
   (begin
     (define (test-drive datum)
       (with-input-from-string
-        (->string datum)
+        (sprintf "~S" datum)
         (lambda ()
           (with-output-to-string compile))))
 

@@ -7,13 +7,10 @@ rule csc
 build epsilon: csc src/epsilon.scm epsilon.core.o
   CSC_FLAGS = -uses core
 
-build tests: csc src/tests/tests.scm epsilon.core.o tests.io.o
-  CSC_FLAGS = -uses core -uses testio
+build tests: csc src/tests/tests.scm epsilon.core.o
+  CSC_FLAGS = -uses core
 
 build epsilon.core.o | epsilon.core.import.scm: csc src/core.scm
   CSC_FLAGS = -cJ -unit core
-
-build tests.io.o | tests.io.import.scm: csc src/tests/io.scm
-  CSC_FLAGS = -cJ -unit testio
 
 default epsilon tests
