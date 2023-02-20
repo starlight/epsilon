@@ -13,4 +13,7 @@ build tests: csc src/tests/tests.scm epsilon.core.o
 build epsilon.core.o | epsilon.core.import.scm: csc src/core.scm
   CSC_FLAGS = -cJ -unit core
 
+build epsilon.transform.o | epsilon.transform.import.scm: csc src/transform.scm
+  CSC_FLAGS = -cJ -unit transform
+
 default epsilon tests
